@@ -1,0 +1,5 @@
+Username: pochochoy, Experience: Intermediate, Metric: Metric, Height: 165, Bodyweight: 65, Squat: 210, Bench: 115, Deadlift: 245
+Username: pochi, Experience: Intermediate, Metric: Metric, Height: 160, Bodyweight: 65, Squat: 210, Bench: 115, Deadlift: 245
+Username: Pochi, Experience: Intermediate, Metric: Metric, Height: 170cm, Bodyweight: 70kg, Squat: 210, Bench: 115, Deadlift: 245
+Username: Pochi12, Experience: Beginner, Metric: Metric, Height: 160, Bodyweight: 65, Squat: 200, Bench: 80, Deadlift: 220
+Username: ambatu, Experience: Beginner, Metric: Metric, Height: 156cm, Bodyweight: 89kg, Squat: 300kg, Bench: 130kg, Deadlift: 280kg

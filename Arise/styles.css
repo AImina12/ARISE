@@ -1,0 +1,640 @@
+/* styles.css - Updated with centered main content */
+/* Applied flexbox centering to 'main' element (since HTML lacks .body-section wrapper) for horizontal and vertical alignment of content. */
+/* Adjusted .pagetxt to use margin: 0 auto for true centering (removed left offset); added max-width for better proportion. */
+/* Ensured .registerlink remains centered with auto margins. */
+/* Retained background banner on .pagetxt with darkening overlay. */
+/* Hid .body-img and .image-container as before. */
+/* Updated .body-section styles to be optional (commented out if not used in HTML); if you add <section class="body-section"> wrapper, uncomment and adjust. */
+/* Mobile: Maintains centering with responsive adjustments. */
+/* Retained original organization: resets, base, hero, body content, navbar, and media queries. */
+/* Fixed syntax errors, removed redundancies, standardized class names, improved consistency, and added comments. */
+/* Set explicit height for layout. Ensured all properties end with semicolons and improved readability. */
+/* Added .returnButton styles: positioned fixed at top-left with red background and rounded edges. Integrated into registration form context without affecting landing page structure. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Monsterrat', sans-serif;
+  background: #000;
+  color: #fff;  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('images/ariseimg1.png');
+  background-repeat: no-repeat;
+  background-size: 102% 337%;
+  background-position: 50% 34%;
+  position: relative;
+  padding: 8px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column; /* Stacks the two rows */
+  align-items: center; /* Centers everything horizontally within the inner area */
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+}
+
+/* NEW: Controls the positioning of the Logo and Auth Buttons on the top row */
+.header-top-row {
+    display: flex;
+    justify-content: space-between; /* Pushes logo and buttons to the edges */
+    align-items: center;
+    width: 100%; /* Important: Makes it span the full width of .hero-inner */
+    padding-bottom: 5px; /* Add slight separation from the navigation below */
+}
+
+/* Logo */
+.logo {
+  display: block;
+  margin: 0;
+  max-width: 260px;
+  height: auto;
+  width: 200px;
+}
+
+/* Main Content - Centered Layout (Applied directly to main since no .body-section in HTML) */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  position: relative;
+  min-height: 400px; /* Explicit min-height for layout; adjust as needed */
+  overflow: hidden;
+  padding: 20px 0; /* Vertical spacing */
+  text-align: center; /* Ensure text content is centered */
+  width: 100%;
+  max-width: 980px; /* Match hero/nav width for consistency */
+  margin: 0 auto; /* Center the entire main within body */
+}
+
+/* Optional: Body Section (Uncomment and wrap content in <section class="body-section"> in HTML if desired) */
+/*
+.body-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+}
+*/
+
+/* Page Text (Headline) - Now with background banner and centered */
+.pagetxt {
+  position: relative; /* For overlay stacking */
+  text-align: center;
+  flex-shrink: 0; /* Prevents text from compressing */
+  margin: 0 auto 20px; /* Centered with bottom margin for spacing; removed left offset */
+  padding: 4rem 10px 8rem; /* Increased top/bottom padding for banner visibility; left/right for text breathing room */
+  font-size: 130px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: normal;
+  z-index: 2; /* Ensure text is above overlay */
+  background-image: url('images/powerliftingcover.jpg'); /* Banner background image */
+  background-repeat: no-repeat;
+  background-size: cover; /* Covers the element like a banner; use 'contain' if you prefer full image visibility */
+  background-position: center center; /* Centers the image */
+  background-attachment: scroll; /* Keeps it fixed to element; use 'fixed' for parallax if desired */
+  min-height: 300px; /* Minimum height to show banner; adjust based on content */
+  border-radius: 8px; /* Optional: subtle rounded corners for banner effect */
+  width: 100%;
+  max-width: 800px; /* Limit width for better banner proportion and centering */
+}
+
+/* Darkening Overlay for .pagetxt Banner */
+.pagetxt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Darkening overlay for readability */
+  border-radius: 8px; /* Match the rounded corners */
+  z-index: -1; /* Behind the text */
+}
+
+/* Register Link - Enhanced for button-like appearance and centered */
+.registerlink {
+  display: inline-flex; /* Changed to inline-flex for better inline positioning */
+  align-items: center;
+  justify-content: center;
+  color: red;
+  text-decoration: none;
+  font-size: 3rem;
+  padding: 12px 24px; /* Added padding for button-like feel */
+  margin: 20px auto; /* Center and add spacing below pagetxt */
+  z-index: 3; /* Above everything */
+  background: rgba(0, 0, 0, 0.2); /* Optional subtle background for readability */
+  border: 2px solid red; /* Optional border for emphasis */
+  border-radius: 4px;
+  transition: all 0.3s ease; /* Smooth hover */
+}
+
+.registerlink:hover {
+  color: darkred;
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.05); /* Optional subtle hover effect */
+}
+
+/* Body Image - Hidden since now used as background; remove this rule if you want it visible separately */
+.body-img,
+.image-container {
+  display: none; /* Hide the original image element and its container */
+}
+
+/* Navbar - Updated to flex for spacing ul and auth-buttons */
+.navbar {
+  width: 100%; /* Span the width */
+ text-align: center;
+ position: relative; 
+ padding: 0 16px;
+}
+
+.navbar #menu-toggle {
+  display: none;
+}
+
+/* Hamburger Menu (Hidden by Default) */
+.navbar .hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  padding: 6px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.navbar .hamburger:hover {
+  color: red;
+}
+
+/* Nav Items - Removed justify-content: space-between; since navbar handles spacing */
+/* Nav Items - FIX: Add auto margins to center the ul container */
+.navbar ul {
+ display: flex;
+ align-items: center;
+ list-style: none;
+ margin: 0 auto;
+ padding: 0;
+ width: 100%;
+ max-width: 700px;
+ justify-content: center; 
+ gap: 40px;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 6px 4px;
+  display: inline-block;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+
+  font-family: 'Monsterrat', sans-serif;
+  font-weight: 700;
+}
+
+.navbar a:hover {
+  color: red;
+  text-shadow: 0 0 8px rgb(255 0 0 / 70%);
+}
+
+/* ---------------------------------- */
+/* NEW BUTTON STYLES FOR UPPER RIGHT */
+/* ---------------------------------- */
+
+.auth-buttons {
+  /* Ensures the buttons stay together on the right */
+  display: flex;
+  gap: 15px; /* Spacing between the Log In and Register buttons */
+}
+
+/* Base style for both buttons */
+/* Base style for both buttons */
+/* Base style for both buttons */
+/* Base style for both buttons */
+.auth-buttons a {
+  text-decoration: none;
+  padding: 6px 12px; /* Small, tight button style */
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  font-family: 'Alumni Sans', sans-serif;
+  font-size: 1rem; /* Smaller font size */
+  white-space: nowrap; /* FIXES: Log In wrapping issue */
+}
+
+/* Style for the Log In button */
+.login-btn {
+  color: #fff; /* White text */
+  border: 2px solid #fff; /* White border */
+  background-color: transparent; /* Transparent background */
+}
+
+.login-btn:hover {
+  color: #000; /* Black text on hover */
+  background-color: #fff; /* White background on hover */
+}
+
+/* Style for the Register button (Matches the other register link if needed) */
+.register-btn {
+  color: #fff; /* White text */
+  border: 2px solid #ff0000; /* Red border */
+  background-color: #ff0000; /* Red background */
+}
+
+.register-btn:hover {
+  background-color: #cc0000; /* Darker red on hover */
+  border-color: #cc0000;
+}
+
+/* Mobile Responsiveness (up to 640px) */
+@media (max-width: 640px) {
+  .logo {
+    max-width: 180px;
+  }
+
+  .hero {
+    min-height: 80px;
+    padding: 6px 0 10px;
+    background-size: 110% 400%;
+    background-position: 11% 30%;
+  }
+
+  .hero-inner {
+    padding: 0 8px;
+  }
+
+  /* Mobile adjustments for main centering */
+  main {
+    min-height: auto; /* Allow natural height on mobile */
+    padding: 10px 0;
+    gap: 20px;
+    justify-content: flex-start; /* Top-align on mobile for better flow */
+  }
+
+  .pagetxt {
+    margin: 0 auto 20px; /* Maintain centering */
+    font-size: 60px; /* Reduced for mobile */
+    padding: 2rem 10px 4rem; /* Reduced padding but still shows banner */
+    min-height: 200px; /* Smaller banner on mobile */
+    max-width: 90vw;
+    background-size: cover; /* Maintains banner fit */
+    background-position: center top; /* Adjust position for mobile cropping if needed */
+  }
+
+  /* Mobile darkening - slightly more on small screens for contrast */
+  .pagetxt::before {
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker on mobile for better visibility */
+  }
+
+  /* Register link on mobile */
+  .registerlink {
+    font-size: 18px;
+    padding: 12px 24px;
+    margin: 10px auto;
+  }
+
+  /* Show hamburger on mobile */
+  .navbar .hamburger {
+    display: block;
+    margin-top: 0;
+  }
+
+  /* Stack nav menu on mobile */
+  .navbar ul {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    background: rgba(0, 0, 0, 0.95);
+    margin: 0;
+    padding: 16px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    overflow: hidden;
+    transition: all 0.28s ease-out;
+    gap: 0;
+  }
+
+  .navbar li {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+
+  .navbar a {
+    font-size: 20px;
+    padding: 12px 16px;
+    width: 100%;
+    display: block;
+  }
+
+  /* Expand menu when checkbox is checked */
+  #menu-toggle:checked ~ ul {
+    max-height: 480px;
+    opacity: 1;
+    transform: translateY(0);
+    overflow: visible;
+  }
+
+  /* Hide auth buttons on mobile to avoid clutter */
+  .auth-buttons {
+    display: none;
+  }
+}
+
+/* Extra Small Screens (up to 480px) */
+@media (max-width: 480px) {
+  .navbar a {
+    font-size: 18px;
+    padding: 12px 16px;
+  }
+
+  .hero {
+    background-size: 120% 450%;
+    background-position: 50% 34%;
+    min-height: 60px;
+    padding: 4px 0 8px;
+  }
+
+  .logo {
+    max-width: 150px;
+  }
+
+  .pagetxt {
+    font-size: 40px; /* Further reduced */
+    padding: 1.5rem 8px 3rem; /* Even smaller padding */
+    min-height: 150px;
+    margin: 0 auto 15px; /* Adjusted spacing for small screens */
+  }
+
+  .registerlink {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px auto;
+  }
+
+  main {
+    padding: 10px 0;
+    max-width: 100%; /* Full width on very small screens */
+  }
+}
+
+/* Registration Form Styles (Separate context for registration page; does not affect index.html landing page structure) */
+body.registration-page {
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.registration-container {
+  background: #111; /* Slightly lighter black for form container */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2); /* Subtle red shadow */
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid #333; /* Dark border for container */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #fff;
+  
+  font-size: 2rem;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Red glow for title */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #333; /* Default dark border */
+  border-radius: 4px;
+  background: #000000;
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  border-color: #ff0000; /* Red border on focus */
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  color: #888; /* Gray hints for placeholders */
+}
+
+/* Red borders for error states */
+input.error,
+select.error {
+  border-color: #ff0000 !important;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Gender radio buttons */
+.gender-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gender-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+.gender-group input[type="radio"] {
+  width: auto;
+  margin-right: 5px;
+  accent-color: #ff0000; /* Red for radio buttons */
+}
+
+/* Error messages */
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none; /* Hidden by default */
+  text-align: left;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background: #000;
+  color: #fff;
+  border: 2px solid #ff0000;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background: #ff0000;
+  color: #000;
+  transform: scale(1.02);
+}
+
+button[type="submit"]:disabled {
+  background: #333;
+  border-color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Success message (optional, for full submission) */
+.success-message {
+  color: #00ff00;
+  text-align: center;
+  margin-top: 10px;
+  display: none;
+}
+
+/* Country select styling - Ensure flags display properly */
+select option {
+  background: #222;
+  color: #fff;
+  padding: 10px;
+}
+
+select option:checked {
+  background: #ff0000;
+  color: #000;
+}
+
+/* Return Button - Positioned at top left of screen with red background and rounded edges (applies to registration page without affecting index.html) */
+.returnButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #ff0000; /* Red background */
+  color: #fff; /* White text for contrast */
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px; /* Proper edge rounding */
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  transition: all 0.3s ease;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.returnButton:hover {
+  background: #cc0000; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.returnButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments for registration page */
+@media (max-width: 600px) {
+  body.registration-page {
+    padding: 10px;
+  }
+
+  .registration-container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .gender-group {
+    justify-content: center;
+  }
+
+  select {
+    font-size: 14px; /* Smaller font for long country lists on mobile */
+  }
+
+  .returnButton {
+    top: 10px;
+    left: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px; /* Slightly smaller rounding on mobile */
+  }
+}
+
